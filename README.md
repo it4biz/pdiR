@@ -19,8 +19,8 @@ We will help you with the correct PDI version, the correct PDI/R plugin, the cor
 
 # Changelog
 
-pdiR 5.3
-(JDK): Java SE Development Kit 7u79.
-pdi-ce-5.3.0.0-213.zip.
-RScriptPlugin-0.0.4.
-biserver-ce-5.3.0.0-213
+pdiR 5.3 <br>
+(JDK): Java SE Development Kit 7u79.<br>
+pdi-ce-5.3.0.0-213.zip.<br>
+RScriptPlugin-0.0.4.<br>
+biserver-ce-5.3.0.0-213<br>
