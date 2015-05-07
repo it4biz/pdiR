@@ -23,7 +23,11 @@ ENV R_HOME=/usr/lib/R
 ENV R_LIBS_USER=/usr/lib/R/library
 ENV PATH=.:$PATH:$R_HOME/bin
 
-COPY test /opt/pentaho/test
 RUN sed -i 's/\.\.\/libswt/libswt/g' ${PENTAHO_HOME}/data-integration/spoon.sh
+
+# Testing PDI with R step
+# docker build -t pentaho/pdir .
+# docker run --rm -it pentaho/pdir /opt/pentaho/test/test.sh
+COPY test /opt/pentaho/test
 
 
