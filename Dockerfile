@@ -26,3 +26,4 @@ ENV PATH=.:$PATH:$R_HOME/bin
 COPY test /opt/pentaho/test
 RUN sed -i 's/\.\.\/libswt/libswt/g' ${PENTAHO_HOME}/data-integration/spoon.sh
 
+
