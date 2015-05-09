@@ -1,11 +1,43 @@
-FROM wmarinho/pentaho-kettle
+# FROM wmarinho/ubuntu:oracle-jdk-7
+# Mixed with the last two pull request from https://github.com/wmarinho/pdiR
 
+# Docker Library 
+FROM java:7
+
+MAINTAINER Caio Moreno de Souza caiomsouza@gmail.com
+
+# Init ENV
+ENV PDI_TAG 5.3.0.0-213
 ENV R_VERSION 0.0.4
+
+ENV PENTAHO_HOME /opt/pentaho
+
+# Apply JAVA_HOME
+RUN . /etc/environment
+ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-7-oracle
+
+RUN apt-get update \
+    && apt-get install wget unzip git -y && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+# Download Pentaho Data Integration (PDI) (pdi-ce-5.3.0.0-213.zip)
+#RUN /usr/bin/wget -nv  http://ci.pentaho.com/view/Data%20Integration/job/kettle-5.1/lastSuccessfulBuild/artifact/assembly/dist/pdi-ce-${PDI_TAG}.zip -O /tmp/pdi-ce-${PDI_TAG}.zip 
+RUN /usr/bin/wget -nv http://downloads.sourceforge.net/project/pentaho/Data%20Integration/5.3/pdi-ce-${PDI_TAG}.zip -O /tmp/pdi-ce-${PDI_TAG}.zip
+
+RUN  /usr/bin/unzip -q /tmp/pdi-ce-${PDI_TAG}.zip -d  $PENTAHO_HOME &&\
+     rm /tmp/pdi-ce-${PDI_TAG}.zip
+
+# COPY run.sh /opt/pentaho/data-integration/
+# COPY slave_dyn.xml /opt/pentaho/data-integration/
+
+WORKDIR /opt/pentaho/data-integration
+
 RUN apt-get update -y
 
 RUN apt-get install r-base -y
 
-RUN apt-get install unzip
+# RUN apt-get install unzip
 
 RUN wget -nv http://dekarlab.de/download/RScriptPlugin-${R_VERSION}.zip -O /tmp/RScriptPlugin-${R_VERSION}.zip
  
@@ -28,6 +60,10 @@ RUN sed -i 's/\.\.\/libswt/libswt/g' ${PENTAHO_HOME}/data-integration/spoon.sh
 # Testing PDI with R step
 # docker build -t pentaho/pdir .
 # docker run --rm -it pentaho/pdir /opt/pentaho/test/test.sh
-COPY test /opt/pentaho/test
+# COPY test /opt/pentaho/test
+
+# EXPOSE 8181
+
+#CMD ["./run.sh"]
 
 
