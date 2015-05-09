@@ -1,21 +1,26 @@
+It is to soon to say anything about our new open source project called pdiR, but feel free to try it and tell us your thougths creating a issue here.<br><br>
+
 # pdiR
-PDI (Pentaho Data Integration) + R
+Integrating PDI (Pentaho Data Integration) with R in an easy way for you.
 
-An easy way to use PDI (Pentaho Data Integration) with R.
+pdiR = PDI (Pentaho Data Integration) + R<br>
 
-Turn R into a powerfull R webserver.
+An easy way to use PDI (Pentaho Data Integration) with R.<br>
 
-Run your R Scripts in PDI (Pentaho Data Integration) without having to config anything.
+Turn R into a powerful R web server.<br>
 
-Simply pull this image from Docker Hub and start your pdiR server.
+Run your R Scripts in PDI (Pentaho Data Integration) without having to config anything.<br>
 
-You can run your R script in a Sparkl / Pentaho Dashboard.
+Simply pull this image from Docker Hub and start your pdiR server.<br>
 
-You can create amazing things when you integrate PDI with R.
+You can run your R script in a Sparkl / Pentaho Dashboard.<br>
 
-But it is not an easy task, that's why we create this project, to help you.
+You can create amazing things when you integrate PDI with R.<br>
 
-We will help you with the correct PDI version, the correct PDI/R plugin, the correct JDK, the correct environment and you will just focus on your R Script and your business needs.
+But it is not an easy task, that's why we create this project, to help you.<br>
+
+We will help you with the correct PDI version, the correct PDI/R plugin, the correct JDK, the correct
+environment and you will just focus on your R Script and your business needs.<br><br>
 
 # Changelog
 
