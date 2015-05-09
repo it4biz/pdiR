@@ -10,6 +10,10 @@ MAINTAINER Caio Moreno de Souza caiomsouza@gmail.com
 ENV PDI_TAG 5.3.0.0-213
 ENV R_VERSION 0.0.4
 
+# Integrating with REDIS
+ENV RREDIS 1.6.9
+# http://cran.rstudio.com/src/contrib/rredis_1.6.9.tar.gz
+
 ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
@@ -45,6 +49,13 @@ RUN unzip -q /tmp/RScriptPlugin-${R_VERSION}.zip -d /opt/ &&\
     mv /opt/RScript* ${PENTAHO_HOME}/data-integration/plugins/steps/
 
 ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
+
+# REDIS
+RUN wget -nv http://cran.rstudio.com/src/contrib/rredis_1.6.9.tar.gz -O /tmp/rredis_1.6.9.tar.gz &&\
+    R CMD javareconf JAVA_HOME=${PENTAHO_JAVA_HOME} &&\
+    R CMD INSTALL -l /usr/lib/R/library /tmp/rredis_1.6.9.tar.gz 
+
+# rJava
 RUN wget -nv http://cran.r-project.org/src/contrib/rJava_0.9-6.tar.gz -O /tmp/rJava_0.9-6.tar.gz &&\
     R CMD javareconf JAVA_HOME=${PENTAHO_JAVA_HOME} &&\
     R CMD INSTALL -l /usr/lib/R/library /tmp/rJava_0.9-6.tar.gz 
