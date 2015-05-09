@@ -22,6 +22,9 @@ But it is not an easy task, that's why we create this project, to help you.<br>
 We will help you with the correct PDI version, the correct PDI/R plugin, the correct JDK, the correct
 environment and you will just focus on your R Script and your business needs.<br><br>
 
+#pdiR at Docker
+sudo docker pull it4biz/pdir:latest
+
 # Changelog
 
 pdiR 5.3 <br>
